@@ -1,0 +1,53 @@
+@if (cartDetails!=null) {
+
+    @if (cartDetails.numOfCartItems>0) {
+        <div class="container p-4 bg-main-light mt-5 rounded-2 shadow-sm">
+        <div class="h4">shop Cart</div>
+        <p class="text-main font-sm fw-medium border-bottom pb-2">TotalPrice:{{cartDetails.data.totalCartPrice}} EGP</p>
+        @for (cartproduct of cartDetails.data.products; track cartproduct._id) {
+            <div class="row p-3 mt-4 border-bottom">
+            <div class="col-md-1">
+                <img class="w-100 img-thumbnail rounded-2 border-2" [src]="cartproduct.product.imageCover" alt="">
+            </div>
+            <div class="col-md-11 d-flex justify-content-between">
+                <div>
+                    <p>{{cartproduct.product.title}}</p>
+                    <p class="text-main fw-medium my-1">{{cartproduct.price}}</p>
+                    <button (click)="handleDeleteProductFromCart(cartproduct.product._id)" class="delete btn  border-2 border-success">
+                        <i class="fa-solid fa-trash m-0 text-main"></i> 
+                        <span class="ms-1">remove</span>
+                    
+                    </button>
+                </div>
+                <div>
+                    <button  (click)="handleQuantityUpdated(cartproduct.product._id ,cartproduct.count +1 )" class=" border-0 bg-main text-white btn">+</button>
+                    <span class="mx-2">{{cartproduct.count}}</span>
+                    <button [disabled]="cartproduct.count == 1" (click)="handleQuantityUpdated(cartproduct.product._id ,cartproduct.count -1 )" class=" border-0 bg-main text-white btn">-</button>
+                </div>
+            </div> 
+            </div>
+        }
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="mt-3">
+                <button [routerLink]="['/shiping-address' , cartDetails.cartId ,'card']" class="btn bg-main text-white me-3">Online payment</button>
+                <button [routerLink]="['/shiping-address' , cartDetails.cartId ,'cash']" class="btn bg-main text-white">Cash payment</button>
+            </div>
+             <button (click)="handleClearCart()" class="btn bg-main mt-3 text-white">
+                <span class="me-2">clear Cart</span>
+                <i class="fa-solid fa-trash m-0 text-white"></i> 
+            </button>
+        </div>
+       
+    </div>
+    }@else {
+    <div class="w-50 p-4 mx-auto shadow-sm mt-5 text-center">
+        <p class="fw-bold fs-3">your cart is empty</p>
+    </div>
+}
+
+
+}@else {
+    <div class="w-50 p-4 mx-auto shadow-sm mt-5 text-center">
+        <p class="fw-bold fs-3">your cart is empty</p>
+    </div>
+}

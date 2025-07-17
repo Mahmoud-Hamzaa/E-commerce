@@ -1,0 +1,135 @@
+<main class="p-3">
+  <div class="container">
+    <div class="w-75 mx-auto p-4">
+      @if(responseErrorMsg){
+      <div class="error-message mb-3">
+        <p class="alert alert-danger text-center">{{ responseErrorMsg }}</p>
+      </div>
+      }
+      <form (ngSubmit)="handleSignUp()" [formGroup]="signUpFormObj">
+        <div class="userName-input">
+          <label class="mt-4" for="userName"
+            >name <span class="text-danger">*</span> :
+          </label>
+          <input
+            formControlName="name"
+            class="form-control"
+            type="text"
+            id="userName"
+          />
+            @let nameControl = signUpFormObj.get("name");
+          @if (signUpFormObj.get("name")?.touched) {
+          <div>
+            @if (nameControl?.getError('required')) {
+            <p class="text-danger mb-0">userName is required</p>
+            } @else if (nameControl?.getError('minlength')) {
+            <p class="text-danger">minimum length is 3</p>
+            }@else if (nameControl?.getError('maxlength')) {
+            <p class="text-danger">maximum length is 20</p>
+            }
+          </div>
+          }
+        </div>
+
+        <div class="email-input">
+          <label class="mt-4" for="userEmail"
+            >Email <span class="text-danger">*</span> :</label
+          >
+          <input
+            formControlName="email"
+            class="form-control"
+            type="Email"
+            id="userEmail"
+          />
+          @let emailControl = signUpFormObj.get("email");
+          @if (emailControl?.touched) {
+          <div>
+            @if (emailControl?.getError('required')) {
+            <p class="text-danger mb-0">Email is required</p>
+            } @else if (emailControl?.getError('email')) {
+            <p class="text-danger">Enter A Valid Email</p>
+            }
+          </div>
+          }
+        </div>
+
+        <div class="password-input">
+          <label class="mt-4" for="Password"
+            >password <span class="text-danger">*</span> :
+          </label>
+          <input
+            formControlName="password"
+            class="form-control"
+            type="password"
+            id="Password"
+          />
+          @let passwordControl=signUpFormObj.get('password'); 
+          @if(passwordControl?.touched) {
+          <div>
+            @if (passwordControl?.getError('required') && passwordControl?.dirty) {
+            <p class="text-danger mb-0">password is required</p>
+            } @else if (passwordControl?.getError('pattern')) {
+            <p class="text-danger">
+              Enter A Valid password (start with capital letter follwed by small
+              letter follwed by 4 chars)
+            </p>
+            }
+          </div>
+          }
+        </div>
+
+        <div class="rePassword-input">
+          <label class="mt-4" for="RePassword"
+            >Confirm password <span class="text-danger">*</span> :
+          </label>
+          <input
+            formControlName="rePassword"
+            class="form-control"
+            type="password"
+            id="RePassword"
+          />
+        
+          <div>
+            @if (signUpFormObj.getError("passwordMissMatch") && signUpFormObj.get("rePassword")?.touched ) {
+            <p class="text-danger mb-0">rePassword does not equal password</p>
+            }
+          
+          </div>
+          
+        </div>
+
+        <div class="phone-input">
+          <label class="mt-4" for="phone"
+            >Phone <span class="text-danger">*</span> :
+          </label>
+          <input
+            formControlName="phone"
+            class="form-control"
+            type="tel"
+            id="phone"
+          />
+          @if (signUpFormObj.get("phone")?.touched) {
+          <div>
+            @if (signUpFormObj.get("phone")?.getError('required')) {
+            <p class="text-danger mb-0">phone is required</p>
+            } @else if (signUpFormObj.get("phone")?.getError('pattern')) {
+            <p class="text-danger">enter a valid phone number</p>
+            }
+          </div>
+          }
+        </div>
+
+        <button
+          class="text-light bg-main btn mt-4"
+          [disabled]="signUpFormObj.invalid || isLoading"
+        >
+          @if (isLoading==false) {
+            <span>Submit</span>
+          }@else {
+             <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</main>

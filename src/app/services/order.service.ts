@@ -1,0 +1,26 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Shiping } from '../interfaces/shiping';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class OrderService {
+
+  constructor(private httpClient:HttpClient) { }
+
+  Checkoutsession(shipingAdress:Shiping , cartId:string):Observable<any>
+  {
+    return this.httpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:4200`,
+      {shippingAddress:shipingAdress}
+    )
+  }
+
+  CashOrder(shipingAdress:Shiping , cartId:string):Observable<any>
+  {
+    return this.httpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartId}`,
+      {shippingAddress:shipingAdress}
+    )
+  }
+}

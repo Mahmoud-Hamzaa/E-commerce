@@ -1,0 +1,105 @@
+<main>
+  <nav class="navbar navbar-expand-lg bg-body-secondary">
+    <div class="container">
+      <a class="navbar-brand cursor-pointer">
+        <img src="Assets/images/freshcart-logo.svg" alt="" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      @if (isLoggedInUser==true) {
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLinkActive="text-main"
+              routerLink="home"
+              aria-current="page"
+              >Home</a
+            >
+          </li>
+       
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLinkActive="text-main"
+              routerLink="products"
+              >Products</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLinkActive="text-main"
+              routerLink="categories"
+              >Categories</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="text-main" routerLink="brands"
+              >Brands</a
+            >
+          </li>
+        </ul>
+      </div>
+      }
+
+      <div class="d-flex align-items-center">
+        @if (loggedInUserName!= null) {
+        <div class="userName rounded-1 p-2">
+         <a routerLink="userprofile">
+           <span class="text-uppercase me-1">welcome</span>
+          <span class="text-main text-uppercase fw-medium">{{
+            loggedInUserName
+          }}</span>
+        </a>
+        </div>
+        }
+        <div class="social-media-icons cursor-pointer">
+          <ul class="d-flex gap-3">
+            <li class="fab fa-instagram"></li>
+            <li class="fab fa-facebook"></li>
+            <li class="fab fa-tiktok"></li>
+            <li class="fab fa-twitter"></li>
+            <li class="fab fa-linkedin"></li>
+            <li class="fab fa-youtube"></li>
+          </ul>
+        </div>
+
+        <div class="registeration-links">
+          <ul class="d-flex gap-3">
+            @if (isLoggedInUser == true) {
+            <li><a (click)="logout()" routerLink="">SignOut</a></li>
+            <li>
+              <a routerLink="/cart" class=" cart-icon position-relative cursor-pointer">
+                <i class="fa-solid fa-cart-shopping fa-lg"></i>
+                <span
+                  class="position-absolute    badge rounded-pill bg-danger font-sm "
+                >
+                  {{userCartItemsNumbers}}
+                </span>
+              </a>
+            </li>
+            } @else {
+            <li>
+              <a routerLinkActive="text-main" routerLink="register">Register</a>
+            </li>
+            <li>
+              <a routerLinkActive="text-main" routerLink="login">Login</a>
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</main>

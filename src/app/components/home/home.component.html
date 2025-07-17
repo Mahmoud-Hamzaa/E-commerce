@@ -1,0 +1,16 @@
+ <div class="container p-4 ">
+  <app-main-slider></app-main-slider>
+  <app-categories-slider></app-categories-slider>
+  <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 mt-3">
+    @if (productsList!=undefined) {
+      @for (product of productsList.slice(0,20); track $index) 
+    {
+        <div class="col  ">
+          <app-product [product]="product"></app-product>
+        </div>
+
+    }
+    }
+  </div>
+</div> 
+

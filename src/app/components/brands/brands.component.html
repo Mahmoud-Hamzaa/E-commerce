@@ -1,0 +1,23 @@
+<div class="container p-5 cursor-pointer ">
+   <div class="row  row-cols-md-2 row-cols-lg-4  g-lg-4  justify-content-center">
+    @for (brand of allBrandsList; track brand._id) {
+    <div class="col">
+    <div class="inner shadow-sm rounded-3 border border-info">
+          <div class="imageWrapper ">
+        <img
+          class="object-fit-cover w-100 rounded-3 "
+          
+          [src]="brand.image"
+          alt=""
+        />
+      </div>
+      <h4 class="text-center mt-3 text-info bg-body-tertiary">{{ brand.name }}</h4>
+    </div>
+    </div>
+    }
+  </div> 
+
+
+
+</div>
+

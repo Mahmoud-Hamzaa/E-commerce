@@ -1,0 +1,23 @@
+<div class="inner product p-3">
+  <div class="rounded-2">
+      <a [routerLink]="['/product-details' , product._id]">
+    <img class="w-100" [src]="product.imageCover" [alt]="product.title" />
+    <span class="text-main text-uppercase mt-3 fw-medium">{{
+      product.category.name
+    }}</span>
+    <p class="fw-bold">{{ product.title.split(" " , 2).join(" ") }}</p>
+    <div class="d-flex justify-content-between mt-3">
+      <span class="price">{{ product.price }}EGP</span>
+      <div class="rating">
+        <span><i class="fa-solid fa-star rating-color"></i></span>
+        <span>{{ product.ratingsAverage }}</span>
+      </div>
+    </div>
+  </a>
+  </div>
+  <button (click)="handleAddToCart(product._id)" class="btn bg-main text-white w-100 mt-3">+ add to cart</button>
+  </div>
+
+
+
+ 

@@ -1,0 +1,16 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="inner text-center d-flex flex-column align-items-center border border-2 p-4 shadow-sm rounded-2 border-success ">
+        <img class="w-75 img-thumbnail rounded-circle" src="Assets/images/avataaars.svg" alt="" />
+        <h2 class="text-main mt-3 h3 text-uppercase"><span class="fs-3 text-secondary">welcome,</span>{{ userName }}</h2>
+        <a routerLink="update-user-password" routerLinkActive="fw-medium text-main" class="mt-3 text-secondary text-decoration-underline d-block">update your password</a>
+        <a routerLink="update-user-info" routerLinkActive="fw-medium text-main" class="mt-3 text-secondary text-decoration-underline d-block">Edit user Info</a>
+      </div>
+    </div>
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>

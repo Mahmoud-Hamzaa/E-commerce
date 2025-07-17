@@ -1,0 +1,11 @@
+.userName{
+    border: 1px solid #0aad0a;
+
+}
+.font-sm{
+    font-size: 8px;
+}
+.cart-icon span{
+    top: -50%;
+    left: 90%;
+}

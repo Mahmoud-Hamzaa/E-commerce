@@ -1,0 +1,64 @@
+<main class="p-3">
+  <div class="container">
+    <form (ngSubmit)="handleLogin()" [formGroup]="loginFormObj">
+      <div class="email-input">
+        <label class="mt-4" for="userEmail"
+          >Email <span class="text-danger">*</span> :</label
+        >
+        <input
+          formControlName="email"
+          class="form-control"
+          type="Email"
+          id="userEmail"
+        />
+        @if (loginFormObj.get("email")?.touched) {
+        <div>
+          @if (loginFormObj.get("email")?.getError('required')) {
+          <p class="text-danger mb-0">Email is required</p>
+          } @else if (loginFormObj.get("email")?.getError('email')) {
+          <p class="text-danger">Enter A Valid Email</p>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="password-input">
+        <label class="mt-4" for="Password"
+          >password <span class="text-danger">*</span> :
+        </label>
+        <input
+          formControlName="password"
+          class="form-control"
+          type="password"
+          id="Password"
+        />
+        @let passwordControl=loginFormObj.get('password');
+       
+        <div>
+          @if (passwordControl?.getError('required') && passwordControl?.dirty)
+          {
+          <p class="text-danger mb-0">password is required</p>
+          } 
+          
+        </div>
+        
+      </div>
+      @if (responseErrorMsg) {
+      <P class="alert alert-danger text-center mt-3">{{ responseErrorMsg }} </P>
+      }
+   <div class="d-flex justify-content-end align-items-center mt-3">
+      <a routerLink="/forget-password"><p class="text-decoration-underline"> forget your password ?</p></a>
+       <button
+        class="text-light bg-main btn ms-3  "
+        [disabled]="loginFormObj.invalid"
+      >
+        @if (isLoading==false) {
+        <span>login</span>
+        } @else {
+        <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+        }
+      </button>
+   </div>
+    </form>
+  </div>
+</main>
