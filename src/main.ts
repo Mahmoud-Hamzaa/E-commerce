@@ -1,8 +1,18 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { routes } from './routes';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './app/interceptors/auth.interceptor';
+import { spinnerInterceptor } from './app/interceptors/spinner.interceptor';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-platformBrowserDynamic().bootstrapModule(AppModule, {
-  ngZoneEventCoalescing: true
+
+bootstrapApplication(AppComponent , {
+  providers:[
+    provideRouter(routes , withComponentInputBinding()),
+    provideHttpClient(withInterceptors([authInterceptor , spinnerInterceptor])),
+    provideAnimations()
+  ]
 })
-  .catch(err => console.error(err));

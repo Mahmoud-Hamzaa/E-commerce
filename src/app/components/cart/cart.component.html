@@ -3,7 +3,7 @@
     @if (cartDetails.numOfCartItems>0) {
         <div class="container p-4 bg-main-light mt-5 rounded-2 shadow-sm">
         <div class="h4">shop Cart</div>
-        <p class="text-main font-sm fw-medium border-bottom pb-2">TotalPrice:{{cartDetails.data.totalCartPrice}} EGP</p>
+        <p class="text-main font-sm fw-medium border-bottom pb-2">Total Price: {{cartDetails.data.totalCartPrice}} EGP</p>
         @for (cartproduct of cartDetails.data.products; track cartproduct._id) {
             <div class="row p-3 mt-4 border-bottom">
             <div class="col-md-1">
@@ -12,10 +12,10 @@
             <div class="col-md-11 d-flex justify-content-between">
                 <div>
                     <p>{{cartproduct.product.title}}</p>
-                    <p class="text-main fw-medium my-1">{{cartproduct.price}}</p>
-                    <button (click)="handleDeleteProductFromCart(cartproduct.product._id)" class="delete btn  border-2 border-success">
+                    <p class=" fw-medium my-1 text-muted">{{cartproduct.price}} EGP</p>
+                    <button (click)="handleDeleteProductFromCart(cartproduct.product._id)" class="delete btn  border-2 border-info">
                         <i class="fa-solid fa-trash m-0 text-main"></i> 
-                        <span class="ms-1">remove</span>
+                        <span class="ms-1 text-main">remove</span>
                     
                     </button>
                 </div>

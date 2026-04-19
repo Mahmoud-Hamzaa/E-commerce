@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
+  standalone:true,
+  imports:[ReactiveFormsModule],
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
   styleUrl: './forget-password.component.css'
