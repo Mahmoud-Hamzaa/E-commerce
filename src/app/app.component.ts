@@ -1,18 +1,14 @@
 
 import { Component, inject } from '@angular/core';
-import { NgxSpinnerService,  NgxSpinnerModule } from "ngx-spinner";
-import { NavbarComponent } from "./components/navbar/navbar.component";
-import {  RouterOutlet } from "@angular/router";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
-  standalone:true,
-  imports: [NavbarComponent, RouterOutlet, NgxSpinnerModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'E-commerce#stand';
+  title = 'E-commerce';
   spinner = inject(NgxSpinnerService)
 
   ngOnInit()

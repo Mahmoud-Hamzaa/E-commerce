@@ -2,11 +2,8 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CartResponse } from '../../interfaces/cart-response';
 import { Subscription } from 'rxjs';
-import { RouterLink } from '@angular/router';
 
 @Component({
-  standalone:true,
-  imports:[RouterLink],
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'

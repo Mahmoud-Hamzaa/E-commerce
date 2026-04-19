@@ -9,7 +9,6 @@ import { ForgetPasswordInterface } from '../interfaces/forget-password-interface
 import { ResetCodeInterface } from '../interfaces/reset-code-interface';
 import { DecodedToken } from '../interfaces/decoded-token';
 import { jwtDecode } from 'jwt-decode';
-import { UpdateUserInfo } from '../interfaces/update-user-info';
 
 @Injectable({
   providedIn: 'root'
@@ -60,20 +59,16 @@ export class AuthService {
 
   updateUserPassword(updatePassForm:any):Observable<any>
   {
-    return this.httpClient.put("https://ecommerce.routemisr.com/api/v1/users/changeMyPassword",updatePassForm)
-  }
-
-  UpdateUserInfo(updateUserInfoForm:UpdateUserInfo):Observable<any>
-  {
-    
-    
-    return this.httpClient.put("https://ecommerce.routemisr.com/api/v1/users/updateMe",updateUserInfoForm)
+    return this.httpClient.put("https://ecommerce.routemisr.com/api/v1/users/changeMyPassword",
+      updatePassForm
+    )
   }
 
   getUserName():string | null
   {
      let token = localStorage.getItem("applicationtoken")
-      
+      console.log(token);
+      // let decodedToken!:DecodedToken
       if (token) {
         
        let decodedToken = jwtDecode<DecodedToken>(token)

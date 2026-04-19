@@ -1,20 +1,17 @@
-import { AfterViewInit, Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { passwordMatch } from '../../custom_validator/password-match';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  standalone:true,
-  imports:[ReactiveFormsModule],
   selector: 'app-update-user-password',
   templateUrl: './update-user-password.component.html',
   styleUrl: './update-user-password.component.css'
 })
-export class UpdateUserPasswordComponent  {
-
-  @ViewChild("successMsg") successElement!:ElementRef
-  // isPassChangeSucessfully = false
+export class UpdateUserPasswordComponent {
+  
+  isPassChangeSucessfully = false
   isLoading = false
   successMSg!:string
   errorMsg!:string
@@ -29,15 +26,6 @@ export class UpdateUserPasswordComponent  {
 
 
 
-handleAlertMsg()
-{
-  setTimeout(() => {
-   this.successElement.nativeElement.classList.remove("done")
-}, 2000);
-
-}
-
-
 
   handlepasswordUpdating()
   {
@@ -47,16 +35,14 @@ handleAlertMsg()
       
        this.authService.updateUserPassword(this.updatePassFormObj.value).subscribe({
         next:(response)=>{
-           this.successElement.nativeElement.classList.add("done")
-           this.isLoading = false
-           console.log(response);
-           this.handleAlertMsg()
-         
+          this.isLoading = false
+          console.log(response);
+          this.successMSg = response.message
           
         },
         error:(err)=> {
           this.isLoading = false
-          this.errorMsg= err.error.message
+          this.errorMsg= err.message
         },
        })
     }

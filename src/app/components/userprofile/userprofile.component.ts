@@ -1,11 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
-import { RouterOutlet } from "@angular/router";
 
 @Component({
-  standalone:true,
-  imports: [RouterOutlet],
   selector: 'app-userprofile',
   templateUrl: './userprofile.component.html',
   styleUrl: './userprofile.component.css'

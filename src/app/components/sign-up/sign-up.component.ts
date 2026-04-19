@@ -1,15 +1,12 @@
 
 import { Component, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup,  ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { passwordMatch } from '../../custom_validator/password-match';
 
-
 @Component({
-  standalone:true,
-  imports:[ReactiveFormsModule],
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css'

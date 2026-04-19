@@ -2,12 +2,10 @@ import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../interfaces/product';
-import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription } from 'rxjs';
 
 @Component({
-  standalone:true,
-  imports: [CarouselModule],
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
@@ -15,8 +13,7 @@ import { Subscription } from 'rxjs';
 export class ProductDetailsComponent implements OnChanges  , OnDestroy{
   constructor(private activateRoute: ActivatedRoute, private productsServices: ProductsService) { }
   productDetails!: Product
-  productImages!:string[]
-  
+  // product_id!: string | null
   @Input() id!: string
   getSpecificProductSubscription!:Subscription
 
@@ -54,9 +51,7 @@ export class ProductDetailsComponent implements OnChanges  , OnDestroy{
       this.getSpecificProductSubscription = this.productsServices.getSpecificProduct(this.id).subscribe({
         next: (response) => {
           this.productDetails = response.data
-          this.productImages = response.data.images
-         
-          
+
 
 
         },

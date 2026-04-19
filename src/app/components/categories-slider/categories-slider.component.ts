@@ -1,13 +1,11 @@
 import { CategoriesService } from './../../services/categories.service';
 import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ProductsService } from '../../services/products.service';
 import { Category } from '../../interfaces/category';
-import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @Component({
-  standalone:true,
-  imports: [CarouselModule],
   selector: 'app-categories-slider',
   templateUrl: './categories-slider.component.html',
   styleUrl: './categories-slider.component.css'

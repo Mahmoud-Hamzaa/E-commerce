@@ -2,13 +2,9 @@ import { Subscription } from 'rxjs';
 import { Product } from './../../interfaces/product';
 import { ProductsService } from './../../services/products.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ProductComponent } from "../product/product.component";
-
 
 
 @Component({
-  standalone:true,
-  imports: [ProductComponent],
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'

@@ -1,13 +1,11 @@
 import { CartService } from './../../services/cart.service';
 import { Product } from './../../interfaces/product';
 import { Component, Input, OnDestroy } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 
 @Component({
-  standalone:true,
-  imports:[RouterLink],
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'

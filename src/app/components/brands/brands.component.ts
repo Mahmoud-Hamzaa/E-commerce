@@ -4,8 +4,6 @@ import { Subscription } from 'rxjs';
 import { Brand } from '../../interfaces/brand';
 
 @Component({
-  standalone:true,
-  imports:[],
   selector: 'app-brands',
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.css'
