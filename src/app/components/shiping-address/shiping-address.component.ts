@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
@@ -8,6 +8,8 @@ import { Subscription } from 'rxjs';
 
 
 @Component({
+  standalone:true,
+  imports:[ReactiveFormsModule],
   selector: 'app-shiping-address',
   templateUrl: './shiping-address.component.html',
   styleUrl: './shiping-address.component.css'

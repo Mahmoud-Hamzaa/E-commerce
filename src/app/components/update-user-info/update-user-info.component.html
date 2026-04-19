@@ -1,1 +1,91 @@
+<div class="position-relative">
+    <div id="success" #successMsg ><span class="badge text-bg-success text-white py-2">your  Info is Updated successfully</span></div>
 
+    <h2>update your Info:</h2>
+<form  [formGroup]="UpdateUserInfoFormObj" (ngSubmit)="handleUpdateUserInfo()" >
+   @if( errorMsg!=null)
+   {
+         <p class=" alert alert-danger text-center">{{errorMsg}}</p>
+   }
+
+    <div class="userName-input">
+          <label class="mt-4" for="userName"
+            >name <span class="text-danger">*</span> :
+          </label>
+          <input
+            formControlName="name"
+            class="form-control"
+            type="text"
+            id="userName"
+          />
+            @let nameControl = UpdateUserInfoFormObj.get("name");
+          @if (nameControl?.touched) {
+          <div>
+            @if (nameControl?.getError('required')) {
+            <p class="text-danger mb-0">userName is required</p>
+            } @else if (nameControl?.getError('minlength')) {
+            <p class="text-danger">minimum length is 3</p>
+            }@else if (nameControl?.getError('maxlength')) {
+            <p class="text-danger">maximum length is 20</p>
+            }
+          </div>
+          }
+    </div>
+
+    <div class="email-input">
+          <label class="mt-4" for="userEmail"
+            >Email <span class="text-danger">*</span> :</label
+          >
+          <input
+            formControlName="email"
+            class="form-control"
+            type="Email"
+            id="userEmail"
+          />
+          @let emailControl = UpdateUserInfoFormObj.get("email");
+          @if (emailControl?.touched) {
+          <div>
+            @if (emailControl?.getError('required')) {
+            <p class="text-danger mb-0">Email is required</p>
+            } @else if (emailControl?.getError('email')) {
+            <p class="text-danger">Enter A Valid Email</p>
+            }
+          </div>
+          }
+    </div>
+
+    <div class="phone-input">
+          <label class="mt-4" for="phone"
+            >Phone <span class="text-danger">*</span> :
+          </label>
+          <input
+            formControlName="phone"
+            class="form-control"
+            type="tel"
+            id="phone"
+          />
+           @let phoneControl = UpdateUserInfoFormObj.get("phone");
+          @if (phoneControl?.touched) {
+          <div>
+            @if (phoneControl?.getError('required')) {
+            <p class="text-danger mb-0">phone is required</p>
+            } @else if (phoneControl?.getError('pattern')) {
+            <p class="text-danger">enter a valid phone number</p>
+            }
+          </div>
+          }
+    </div>
+       
+
+          <button
+          class="text-light bg-info btn mt-4"
+          [disabled]="UpdateUserInfoFormObj.invalid || isLoading"
+        >
+          @if (isLoading==false) {
+            <span>confirm</span>
+          }@else {
+             <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+          }
+        </button>
+</form>
+</div>

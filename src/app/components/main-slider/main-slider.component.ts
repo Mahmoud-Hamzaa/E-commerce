@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
 
 @Component({
+  standalone:true,
+  imports: [CarouselModule],
   selector: 'app-main-slider',
   templateUrl: './main-slider.component.html',
   styleUrl: './main-slider.component.css'

@@ -1,20 +1,24 @@
 <div class="container p-5">
   <div class="row p-3">
     <div class="col-md-4 ">
-      <div class="inner border-1 ">
-        <owl-carousel-o [options]="customOptions">
-          @for (image of productDetails!.images; track $index) {
+      <div class="inner  ">
+      @if (productImages!=undefined) {
+          <owl-carousel-o [options]="customOptions">
+          @for (image of productImages; track $index) {
           <ng-template carouselSlide >
             <img class="w-100" [src]="image"  />
           </ng-template>
           }
         </owl-carousel-o>
+      }
       </div>
     </div>
     <div class="col-md-8 py-5">
-      <div class="product-description">
+    <div class="inner">
+      @if (productDetails!=undefined) {
+          <div class="product-description">
         <h6 class="h3">{{ productDetails.title }}</h6>
-        <p class="text-secondary my-3 px-2 fw-light">
+        <p class="text-secondary my-3  fw-light">
           {{ productDetails.description }}
         </p>
         <span class="text-main fw-medium font-sm">{{
@@ -34,6 +38,8 @@
         </div>
         <button class="w-100 mt-4 btn bg-main text-white">+ add to cart</button>
       </div>
+      }
+    </div>
     </div>
   </div>
 </div>

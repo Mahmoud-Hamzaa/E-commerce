@@ -1,13 +1,15 @@
 import { AuthService } from './../../services/auth.service';
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartService } from '../../services/cart.service';
 
 
 @Component({
+  standalone:true,
+  imports:[ReactiveFormsModule],
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'

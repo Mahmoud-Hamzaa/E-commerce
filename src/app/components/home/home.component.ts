@@ -1,12 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../interfaces/product';
-import { CartService } from '../../services/cart.service';
-import { jwtDecode } from 'jwt-decode';
 import { AuthService } from '../../services/auth.service';
-import { DecodedToken } from '../../interfaces/decoded-token';
+import { ProductComponent } from '../product/product.component';
+import { MainSliderComponent } from "../main-slider/main-slider.component";
+import { CategoriesSliderComponent } from "../categories-slider/categories-slider.component";
+
 
 @Component({
+  standalone:true,
+  imports: [ProductComponent, MainSliderComponent, CategoriesSliderComponent],
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

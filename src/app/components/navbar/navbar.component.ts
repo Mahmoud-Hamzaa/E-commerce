@@ -3,8 +3,11 @@ import { AuthService } from '../../services/auth.service';
 import { __values } from 'tslib';
 import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
+  standalone:true,
+  imports:[RouterLink , RouterLinkActive],
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'

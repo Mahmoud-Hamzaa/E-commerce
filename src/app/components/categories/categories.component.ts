@@ -4,6 +4,8 @@ import { CategoriesService } from '../../services/categories.service';
 import { Subscription } from 'rxjs';
 
 @Component({
+  standalone:true,
+  imports:[],
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
@@ -20,9 +22,9 @@ export class CategoriesComponent implements OnInit  {
   ngOnInit(): void {
     this.categoriesServices.getAllCategories().subscribe({
       next:(response)=>{
-        console.log(response);
+  
         this.categoriesList = response.data
-        console.log("categ" + this.categoriesList);
+       
         
       },
       error:(err)=>{
@@ -32,8 +34,11 @@ export class CategoriesComponent implements OnInit  {
     })
   }
 
-  // ngOnDestroy(): void {
-  //   this.getAllCategoriesSubscription.unsubscribe()
-  // }
+  ngOnDestroy(): void {
+    if (this.getAllCategoriesSubscription!=undefined) {
+      
+      this.getAllCategoriesSubscription.unsubscribe()
+    }
+  }
 
 }
